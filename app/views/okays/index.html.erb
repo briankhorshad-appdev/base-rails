@@ -1,0 +1,106 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      List of all okays
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Add a new okay
+    </h2>
+
+    <form action="/insert_okay" method="post">
+      <div class="form-group">
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="hidden" id="owner_id_box" name="owner_id_from_query" class="form-control">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="okay_or_not_box" name="okay_or_not_from_query" value="1">
+
+        <label class="custom-control-label" for="okay_or_not_box">Okay</label>
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="okay_or_not_box" name="okay_or_not_from_query" value="0">
+
+        <label class="custom-control-label" for="okay_or_not_box">Not Okay</label>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Create okay
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Owner
+        </th>
+
+        <th>
+          Okay or not
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @okays.each do |okay| %>
+      <tr>
+        <td>
+          <%= okay.id %>
+        </td>
+
+        <td>
+          <%= okay.owner_id %>
+        </td>
+
+        <td>
+          <%= okay.okay_or_not %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(okay.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(okay.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/okays/<%= okay.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

@@ -1,0 +1,85 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Okay #<%= @okay.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/okays" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_okay/<%= @okay.id %>" class="btn btn-block btn-outline-secondary">
+          Delete okay
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Owner
+      </dt>
+      <dd>
+        <%= @okay.owner_id %>
+      </dd>
+
+      <dt>
+        Okay or not
+      </dt>
+      <dd>
+        <%= @okay.okay_or_not %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@okay.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@okay.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<hr>
+
+
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h2>
+      Edit okay
+    </h2>
+
+    <form action="/modify_okay/<%= @okay.id %>"  method="post" >
+      <div class="form-group">
+        <label for="owner_id_box">
+          Owner
+        </label>
+
+        <input type="text" id="owner_id_box" name="owner_id_from_query" class="form-control" value="<%= @okay.owner_id %>">
+      </div>
+
+      <div class="custom-control custom-checkbox mb-3">
+        <input type="checkbox" class="custom-control-input" id="okay_or_not_box" name="okay_or_not_from_query" value="1" <%= "checked" if @okay.okay_or_not %>>
+
+        <label class="custom-control-label"
+          for="okay_or_not_box">Okay or not</label>
+      </div>
+
+      <button class="btn btn-block btn-outline-secondary">
+        Update okay
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>

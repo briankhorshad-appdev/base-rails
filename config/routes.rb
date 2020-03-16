@@ -1,5 +1,24 @@
 Rails.application.routes.draw do
 
+  # Routes for the Okay resource:
+
+  # CREATE
+  match("/insert_okay", { :controller => "okays", :action => "create", :via => "post"})
+          
+  # READ
+  match("/okays", { :controller => "okays", :action => "index", :via => "get"})
+  
+  match("/okays/:id_from_path", { :controller => "okays", :action => "show", :via => "get"})
+  
+  # UPDATE
+  
+  match("/modify_okay/:id_from_path", { :controller => "okays", :action => "update", :via => "post"})
+  
+  # DELETE
+  match("/delete_okay/:id_from_path", { :controller => "okays", :action => "destroy", :via => "get"})
+
+  #------------------------------
+
   # Routes for the Follow request resource:
 
   # CREATE
