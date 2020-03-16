@@ -1,6 +1,29 @@
 Rails.application.routes.draw do
 
+  # Routes for the Follow request resource:
+
+  # CREATE
+  match("/insert_follow_request", { :controller => "follow_requests", :action => "create", :via => "post"})
+          
+  # READ
+  match("/follow_requests", { :controller => "follow_requests", :action => "index", :via => "get"})
+  
+  match("/follow_requests/:id_from_path", { :controller => "follow_requests", :action => "show", :via => "get"})
+  
+  # UPDATE
+  
+  match("/modify_follow_request/:id_from_path", { :controller => "follow_requests", :action => "update", :via => "post"})
+  
+  # DELETE
+  match("/delete_follow_request/:id_from_path", { :controller => "follow_requests", :action => "destroy", :via => "get"})
+
+  #------------------------------
+
   get("/", { :controller => "users", :action => "index" })
+  get("/users", { :controller => "users", :action => "index" })
+
+  get("/users/:the_username", {:controller => "users", :action => "show"})
+
 
   # Routes for signing up
 

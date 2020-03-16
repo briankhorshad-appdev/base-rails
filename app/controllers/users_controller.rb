@@ -1,4 +1,15 @@
 class UsersController < ApplicationController
+  
+  #new
+  def show
+    the_username = params.fetch("the_username")
+    @user = User.where({ :username => the_username }).at(0)
+
+    render({ :template => "users/show.html.erb" })
+  end
+
+ 
+ #system generated 
   skip_before_action(:force_user_sign_in, { :only => [:new_registration_form, :create] })
   
     def index
@@ -7,6 +18,7 @@ class UsersController < ApplicationController
     render({ :template => "users/index.html" })
   end
 
+  
   def new_registration_form
     render({ :template => "user_sessions/sign_up.html.erb" })
   end
