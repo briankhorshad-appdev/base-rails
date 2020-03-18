@@ -5,6 +5,8 @@
   <dd><%= @user.id %></dd>
 
   <dt>Edit user</dt>
+<% if session.fetch(:user_id) == @user.id %>
+
   <dd>
     <form action="/update_user/<%= @user.id %>" >
       <label for="browser_username">Username</label>
@@ -14,13 +16,51 @@
     </form>
   </dd>
 </dl>
+<% else %>
+  <dd>
+    <p>You do not have permission to edit</p>
+  </dd>
+<%end%>
+
+<h2>Create New Okay</h2>
+  <% if session.fetch(:user_id) == @user.id %>
+      <form action="/insert_okay" method="post">
+        <div class="form-group">
+          <label for="owner_id_box">
+            Owner
+          </label>
+
+          <input type="hidden" id="owner_id_box" name="owner_id_from_query" class="form-control">
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="okay_or_not_box" name="okay_or_not_from_query" value="1">
+
+          <label class="custom-control-label" for="okay_or_not_box">Okay</label>
+        </div>
+
+        <div class="custom-control custom-checkbox mb-3">
+          <input type="checkbox" class="custom-control-input" id="okay_or_not_box" name="okay_or_not_from_query" value="0">
+
+          <label class="custom-control-label" for="okay_or_not_box">Not Okay</label>
+        </div>
+
+        <button class="btn btn-block btn-outline-secondary">
+          Create okay
+        </button>
+      </form>
+  <% else %>
+    <dd>
+      <p>You do not have permission to edit</p>
+    </dd>
+  <% end %>
 
 <h2>Own Okays</h2>
 
 <table border="1">
   <tr>
     <th>
-      Image
+      Okay?
     </th>
 
     <th>
@@ -28,11 +68,7 @@
     </th>
 
     <th>
-      Caption
-    </th>
-
-    <th>
-      Posted
+      Date
     </th>
 
     <th></th>

@@ -48,4 +48,5 @@ class OkaysController < ApplicationController
 
     redirect_to("/okays", { :notice => "Okay deleted successfully."} )
   end
+
 end
