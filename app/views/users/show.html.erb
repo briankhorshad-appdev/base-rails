@@ -2,7 +2,10 @@
 
 <dl>
   <dt>Your User ID</dt>
-  <dd><%= @user.id %></dd>
+    <dd><%= @user.id %></dd>
+
+  <dt>Number of Followers</dt>
+    <dd><%= @user.followers %></dd>
 
   <dt>Edit your username</dt>
 <% if session.fetch(:user_id) == @user.id %>
