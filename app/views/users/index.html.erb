@@ -11,6 +11,8 @@
     </th>
 
     <th></th>
+    
+    <th></th>
   </tr>
 
   <% @users.each do |user| %>
@@ -22,6 +24,18 @@
     <td>
       <%= user.username %>
     </td>
+    
+    <td>
+      <% if session.fetch(:user_id) != nil%>
+        
+        <form action="/insert_follow_request" method="post">
+        <input id="recipient_id_from_query" name="recipient_id_from_query" type="hidden" value="<%=user.id%>">
+          <button>Follow</button>
+        </form>
+      
+      <%end%>
+    </td>
+
 
     <td>
       <a href="/users/<%= user.username %>">Show details</a>

@@ -20,5 +20,13 @@ class FollowRequest < ApplicationRecord
   validates :recipient_id, :presence => true
   validates :recipient_id, :uniqueness => { :scope => [:sender_id], :message => "already requested" }
 
+  def sender
+    return User.where({ :id => self.sender_id }).at(0).username
+  end
+
+  def recipient
+    return User.where({ :id => self.recipient_id }).at(0).username
+  end
+
 
 end

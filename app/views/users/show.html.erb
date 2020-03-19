@@ -1,10 +1,10 @@
 <h1><%= @user.username %></h1>
 
 <dl>
-  <dt>ID</dt>
+  <dt>Your User ID</dt>
   <dd><%= @user.id %></dd>
 
-  <dt>Edit user</dt>
+  <dt>Edit your username</dt>
 <% if session.fetch(:user_id) == @user.id %>
 
   <dd>
@@ -27,7 +27,6 @@
       <form action="/insert_okay" method="post">
         <div class="form-group">
           <label for="owner_id_box">
-            Owner
           </label>
 
           <input type="hidden" id="owner_id_box" name="owner_id_from_query" class="form-control">

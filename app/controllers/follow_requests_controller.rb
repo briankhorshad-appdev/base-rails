@@ -14,14 +14,14 @@ class FollowRequestsController < ApplicationController
 
   def create
     @follow_request = FollowRequest.new
-    @follow_request.sender_id = params.fetch("sender_id_from_query")
+    @follow_request.sender_id = session.fetch(:user_id)
     @follow_request.recipient_id = params.fetch("recipient_id_from_query")
 
     if @follow_request.valid?
       @follow_request.save
-      redirect_to("/follow_requests", { :notice => "Follow request created successfully." })
+      redirect_to("/users", { :notice => "Follow request created successfully." })
     else
-      redirect_to("/follow_requests", { :notice => "Follow request failed to create successfully." })
+      redirect_to("/users", { :notice => "Follow request failed to create successfully." })
     end
   end
 

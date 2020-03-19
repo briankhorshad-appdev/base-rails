@@ -41,6 +41,12 @@
     </div>
     <% end %>
 
+    <% if session.fetch(:user_id) != nil %>
+      <h2 style="color:blue;text-align:center;">Willkommen, <%= @current_user.username %>!</h2>
+    <%else%>
+
+    <%end%>
+
 
     <% if notice.present? %>
       <div style="border: thin green solid; color: green">
