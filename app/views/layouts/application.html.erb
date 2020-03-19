@@ -18,14 +18,14 @@
   <body>
 
 <ul>
-      <li><a href="/users">All Users</a></li>
+      <li><a href="/users">Startseite</a></li>
 
-      <li><a href="/okays">All public okays</a> </li>
+      <li><a href="/okays">Alle Das Okays</a> </li>
 
 
       <% if session.fetch(:user_id) != nil %>
-        <li><a href="/users/<%= @current_user.username %>">My Profile</a></li>
-        <li><a href="">My Follow Requests</a></li>
+        <li><a href="/users/<%= @current_user.username %>">Mein Profile</a></li>
+        <li><a href="/my_follow_requests/<%= session.fetch(:user_id) %>">Mein Follow Requests</a></li>
         <li><a href="/user_sign_out">Sign Out</a></li>
       <% else %>
         <li><a href="/user_sign_in">Sign In</a></li>
@@ -56,4 +56,8 @@
 
     <%= yield %>
   </body>
+
+  <footer>
+  © <a href= "https://www.youtube.com/watch?v=ciS914MaDl8">Prestige Worldwide</a>
+  </footer>
 </html>

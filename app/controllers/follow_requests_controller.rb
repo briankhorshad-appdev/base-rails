@@ -31,6 +31,7 @@ class FollowRequestsController < ApplicationController
 
     @follow_request.sender_id = params.fetch("sender_id_from_query")
     @follow_request.recipient_id = params.fetch("recipient_id_from_query")
+    
 
     if @follow_request.valid?
       @follow_request.save
@@ -48,4 +49,14 @@ class FollowRequestsController < ApplicationController
 
     redirect_to("/follow_requests", { :notice => "Follow request deleted successfully."} )
   end
+
+  def show_my_followers
+    the_user_id = session.fetch(:user_id)
+
+    @follow_request = FollowRequest.where({ :recipient_id => the_user_id })
+    render({ :template => "/follow_requests/users_requests.html.erb"})
+
+    #render( { :plain => "bitches aint shit"})
+  end 
+
 end
