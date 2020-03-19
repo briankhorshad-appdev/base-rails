@@ -17,7 +17,7 @@
     <form action="/insert_okay" method="post">
       <div class="form-group">
         <label for="owner_id_box">
-          Owner
+          <%= @current_user.username %>, create a new okay!
         </label>
 
         <input type="hidden" id="owner_id_box" name="owner_id_from_query" class="form-control">
@@ -45,7 +45,7 @@
 <hr>
 <div class="row mb-3">
   <div class="col-md-12">
-    <table class="table">
+    <table class="table" border=1 >
       <tr>
         <th>
           ID

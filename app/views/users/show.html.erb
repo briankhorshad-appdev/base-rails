@@ -74,4 +74,27 @@
     <th></th>
   </tr>
 
+  <% @user.own_okays.each do |list_my_okays| %>
+
+    <tr>
+      
+      <td>
+      <%=list_my_okays.parse_okay%>
+      </td>
+
+      <td>
+      <%=list_my_okays.poster%>
+      </td>
+
+      <td>
+      <%=list_my_okays.created_at%>
+      </td>
+
+      <td>
+      Maybe add a button that deletes the okay
+      </td>
+
+    </tr>
+  <%end%>
+
 </table>
