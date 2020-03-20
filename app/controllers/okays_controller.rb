@@ -23,7 +23,7 @@ def create
     the_owner_id = @okay.owner_id
     @the_user = User.where( { :id => the_owner_id}).at(0)
     @the_follower_emails = @the_user.follower_emails
-    @message =  "Hallo! "+@the_user.username.to_s+" is "+@okay.okay_or_not.to_s
+    @message =  "Hallo! "+@the_user.username.to_s+" is "+@okay.parse_okay.to_s
 
     #Create a new instance of the Mailgun Client
     mg_api_key = ENV.fetch("MAILGUN_TOKEN")
