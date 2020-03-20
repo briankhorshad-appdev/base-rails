@@ -39,7 +39,7 @@ def create
       }
 
       #Send your message through the client
-      mg_client.send_message("https://3000-a974ace8-629c-4987-a1f3-567e66652a09.ws-us02.gitpod.io/", message_params)
+      mg_client.send_message("mg.amiokay.org", message_params)
     end 
 
   redirect_to("/okays", { :notice => "Wunderbar! Okay created successfully."})
