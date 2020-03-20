@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   get("/my_follow_requests/:username", { :controller => "follow_requests", :action => "show_my_followers"})
 
-  get("/people_i_follow/:username", { :controller => "follow_requests", :action => "show_people_i_follow"})
+  #get("/people_i_follow/:username", { :controller => "follow_requests", :action => "show_people_i_follow"})
 
   # UPDATE
   

@@ -46,7 +46,7 @@ Now mitte Am I Okay?, you can send your loved ones a quick message to let them k
         <% if user.follower_ids.include?(session.fetch(:user_id)) ==  true %>
           <form action="/delete_follow_request" method="post">
             <input id="recipient_id_from_query" name="recipient_id_from_query" type="hidden" value="<%=user.id%>">
-            Following already. <button>Unfollow</button>
+            Following already.
           </form>        
 
 
