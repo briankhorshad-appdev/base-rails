@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   skip_before_action(:force_user_sign_in, { :only => [:new_registration_form, :create] })
   
     def index
-    @users = User.all.order({ :username => :asc })
+    @users = User.all.order({ :created_at => :asc })
 
     render({ :template => "users/index.html" })
   end

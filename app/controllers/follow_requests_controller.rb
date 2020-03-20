@@ -66,3 +66,4 @@ class FollowRequestsController < ApplicationController
 
     render( { :template => "/follow_requests/users_follows.html.erb"})
   end 
+end
