@@ -56,6 +56,16 @@ class User < ApplicationRecord
     return User.where({ :id => array_of_follower_ids })
   end
 
+  def follower_emails 
+    array_of_follower_ids = self.received_follow_requests.pluck(:sender_id)
+    array_of_followers = User.where({ :id => array_of_follower_ids})
+    return array_of_follower_emails = array_of_followers.pluck(:email)
+  end 
+
+  def follower_ids
+    return self.received_follow_requests.pluck(:sender_id)
+  end 
+
   def following
     array_of_leader_ids = self.sent_follow_requests.pluck(:recipient_id)
 

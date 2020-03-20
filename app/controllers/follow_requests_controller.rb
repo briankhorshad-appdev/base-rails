@@ -47,7 +47,7 @@ class FollowRequestsController < ApplicationController
 
     @follow_request.destroy
 
-    redirect_to("/follow_requests", { :notice => "Follow request deleted successfully."} )
+    redirect_to("/users", { :notice => "Follow request deleted successfully."} )
   end
 
   def show_my_followers
@@ -66,5 +66,9 @@ class FollowRequestsController < ApplicationController
 
     render( { :template => "/follow_requests/users_follows.html.erb"})
   end 
+
+  def 
+  
+  
 
 end

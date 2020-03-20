@@ -6,6 +6,14 @@
 
   <dt>Number of Followers</dt>
     <dd><%= @user.received_follow_requests.count %></dd>
+    <dd>
+      <% if session.fetch(:user_id) != @user.id && @user.follower_ids.include?(session.fetch(:user_id)) ==  true %>
+        <form>
+          <form action="" method="post">
+          <button>Unfollow</button>
+        </form>
+      <%end%>
+    </dd>
 
   <dt>Number of Following</dt>
     <dd><%= @user.sent_follow_requests.count %></dd>

@@ -1,7 +1,15 @@
 <h1>Am I Okay?</h1>
 
 <p>
-Willkommen to Am I Okay? The innovative new platform that allows you to quickly notify family and friends how you are doing as you are traveling. Sick and tired of getting text messages from your mother when in a foreign country asking you how you're doing? I know I am. Now with Am I Okay?, you can send your loved ones a quick message to let them know how you are doing. Brought to you by <a href="https://www.youtube.com/watch?v=ciS914MaDl8">Prestige Worldwide</a>
+Willkommen to Am I Okay? The innovative new platform that allows you to quickly notify family and friends how you are doing as you are traveling. 
+</p>
+
+<p>
+Sick and tired of getting text messages from your mother when in a foreign country asking you how you're doing? I know I am. 
+</p>
+
+<p>
+Now mitte Am I Okay?, you can send your loved ones a quick message to let them know how you are doing. Brought to you by <a href="https://www.youtube.com/watch?v=ciS914MaDl8">Prestige Worldwide</a>
 </p>
 
 
@@ -17,7 +25,7 @@ Willkommen to Am I Okay? The innovative new platform that allows you to quickly 
       Username
     </th>
 
-    <th></th>
+    <th>Following?</th>
     
     <th></th>
   </tr>
@@ -34,30 +42,21 @@ Willkommen to Am I Okay? The innovative new platform that allows you to quickly 
     
     <td>
       <% if session.fetch(:user_id) != nil%>
-        
-        <form action="/insert_follow_request" method="post">
-        <input id="recipient_id_from_query" name="recipient_id_from_query" type="hidden" value="<%=user.id%>">
-          <button>Follow</button>
-        </form>
+
+        <% if user.follower_ids.include?(session.fetch(:user_id)) ==  true %>
+          <form action="/delete_follow_request" method="post">
+            <input id="recipient_id_from_query" name="recipient_id_from_query" type="hidden" value="<%=user.id%>">
+            Following already. <button>Unfollow</button>
+          </form>        
+
+
+        <% elsif user.received_follow_requests.where({ :sender_id => session.fetch(:user_id) }).at(0) == nil %>
+          <form action="/insert_follow_request" method="post">
+            <input id="recipient_id_from_query" name="recipient_id_from_query" type="hidden" value="<%=user.id%>">
+            <button>Follow</button>
+          </form>
+        <%end %>
       
-      <%end%>
-    </td>
-
-    <td>
-      <% if user.received_follow_requests.where({ :sender_id => session.fetch(:user_id) }).include?(session.fetch(:user_id)) %>
-        It worked
-      <% elsif user.received_follow_requests.where({ :sender_id => session.fetch(:user_id) }).at(0) == nil %>
-        It worked, but its nil
-      <%else%>
-        didnt work
-      <%end %>
-    </td>
-
-    <td>
-      <% if user.following.include?(@current_user.id)%>
-        You already follow this person
-      <%else%>
-        Click to follow this person
       <%end%>
     </td>
 

@@ -25,7 +25,7 @@
 
       <% if session.fetch(:user_id) != nil %>
         <li><a href="/users/<%= @current_user.username %>">Mein Profile</a></li>
-        <li><a href="/my_follow_requests/<%= session.fetch(:user_id) %>">Mein Followers Requests</a></li>
+        <li><a href="/my_follow_requests/<%= session.fetch(:user_id) %>">Mein Followers</a></li>
         <li><a href="/user_sign_out">Sign Out</a></li>
       <% else %>
         <li><a href="/user_sign_in">Sign In</a></li>
