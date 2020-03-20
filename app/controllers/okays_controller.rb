@@ -23,6 +23,7 @@ def create
     the_owner_id = @okay.owner_id
     @the_user = User.where( { :id => the_owner_id}).at(0)
     @the_follower_emails = @the_user.follower_emails
+    @message =  "Hallo! "+@the_user.username.to_s+" is "+@okay.okay_or_not.to_s
 
     #Create a new instance of the Mailgun Client
     mg_api_key = ENV.fetch("MAILGUN_TOKEN")
@@ -33,12 +34,12 @@ def create
       message_params = {
         :from => "postmaster@mg.amiokay.org",
         :to => email_addresses,
-        :subject => "Hello!",
+        :subject => @message,
         :text => "This person that you are following wanted you to how they are doing!"
       }
 
       #Send your message through the client
-      mg_client.send_message("mg.amiokay.org", message_params)
+      mg_client.send_message("https://3000-a974ace8-629c-4987-a1f3-567e66652a09.ws-us02.gitpod.io/", message_params)
     end 
 
   redirect_to("/okays", { :notice => "Wunderbar! Okay created successfully."})
