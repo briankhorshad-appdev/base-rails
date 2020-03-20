@@ -56,7 +56,15 @@ class FollowRequestsController < ApplicationController
     @follow_request = FollowRequest.where({ :recipient_id => the_user_id })
     render({ :template => "/follow_requests/users_requests.html.erb"})
 
-    #render( { :plain => "bitches aint shit"})
+    #render( { :plain => "Yeah! You did it buddy! You made this page work!"})
+  end 
+
+  def show_people_i_follow
+    the_user_id = session.fetch(:user_id)
+
+    @follow_request = FollowRequest.where({ :sender_id => the_user_id })
+
+    render( { :template => "/follow_requests/users_follows.html.erb"})
   end 
 
 end

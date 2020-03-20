@@ -32,6 +32,8 @@ Rails.application.routes.draw do
 
   get("/my_follow_requests/:username", { :controller => "follow_requests", :action => "show_my_followers"})
 
+  get("/people_i_follow/:username", { :controller => "follow_requests", :action => "show_people_i_follow"})
+
   # UPDATE
   
   match("/modify_follow_request/:id_from_path", { :controller => "follow_requests", :action => "update", :via => "post"})
