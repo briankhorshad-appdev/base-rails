@@ -35,7 +35,7 @@ def create
         :from => "postmaster@mg.amiokay.org",
         :to => email_addresses,
         :subject => @message,
-        :text => "This person that you are following wanted you to how they are doing!"
+        :text =>  @the_user.username+" wanted you to how they are doing!"
       }
 
       #Send your message through the client
